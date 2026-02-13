@@ -1,5 +1,5 @@
-- name: catalogue configure
-  hosts: catalogue
+- name: cart configure
+  hosts: cart
   become: true
   tasks:
   - name: enable nodejs 20
@@ -10,13 +10,13 @@
      name: nodejs
      state: present
 
-  - name: create system catalogue roboshop
-    ansible.builtin.catalogue:
+  - name: create system cart roboshop
+    ansible.builtin.cart:
      name: roboshop
      system: true
      home: /app
      shell: /sbin/nologin
-     comment: "roboshop system catalogue"
+     comment: "roboshop system cart"
 
   - name: delete app directory
     ansible.builtin.file:
@@ -28,19 +28,19 @@
      path: /app
      state: directory
 
-  - name: delete catalogue zip file
+  - name: delete cart zip file
     ansible.builtin.file:
-     path:  /tmp/catalogue.zip
+     path:  /tmp/cart.zip
      state: absent
 
-  - name: download catalogue
+  - name: download cart
     ansible.builtin.get_url:
-     url:  https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-     dest: /tmp/catalogue.zip
+     url:  https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip 
+     dest: /tmp/cart.zip
 
-  - name: unarchieve catalogue
+  - name: unarchieve cart
     ansible.builtin.unarchive:
-      src: /tmp/catalogue.zip
+      src: /tmp/cart.zip
       dest: /app
       remote_src: yes
 
@@ -48,16 +48,16 @@
     community.general.npm:
       path: /app
 
-  - name: copy catalogue service
+  - name: copy cart service
     ansible.builtin.copy:
-      src: catalogue.service
-      dest: /etc/systemd/system/catalogue.service
+      src: cart.service
+      dest: /etc/systemd/system/cart.service
 
   
 
-  - name: start catalogue
+  - name: start cart
     ansible.builtin.service:
-      name: catalogue
+      name: cart
       state: restarted
       enabled: yes
   
