@@ -54,7 +54,7 @@
       dest: /etc/systemd/system/user.service
 
   - name: copy mongo repo
-    ansible.builtin.tenplate:
+    ansible.builtin.template:
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
 
