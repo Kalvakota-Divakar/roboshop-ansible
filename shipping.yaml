@@ -72,17 +72,18 @@
     - PyMySQL
 
   - name: import shipping data
-    community.mysql.mysql_db:
-      state: import
-      name: all
-      login_host: mysql-dev.divakar88.online
-      login_user: root
-      login_password: RoboShop@1
-      target: "{{ item }}"
-    loop:
+  community.mysql.mysql_db:
+    name: all
+    state: import
+    target: "{{ item }}"
+    login_host: mysql-dev.divakar88.online
+    login_user: root
+    login_password: RoboShop@1
+  loop:
     - /app/db/schema.sql
-    - /app/db/app-user.sql 
+    - /app/db/app-user.sql
     - /app/db/master-data.sql
+
 
   - name: start and enable shipping
     ansible.builtin.service:
