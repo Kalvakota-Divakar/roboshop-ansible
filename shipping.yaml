@@ -63,7 +63,7 @@
     ansible.builtin.systemd_service:
       daemon_reload: true
 
-  - name: install dependencie
+  - name: install dependencies
     ansible.builtin.pip:
       name: "{{ item }}"
       executable: pip3.9
@@ -75,7 +75,7 @@
     community.mysql.mysql_db:
       state: import
       name: all
-      login_host: "{{ MYSQL_HOST }}"
+      login_host: mysql-dev.divakar88.online
       login_user: root
       login_password: RoboShop@1
       target: "{{ item }}"
