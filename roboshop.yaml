@@ -12,7 +12,7 @@
     - mongodb
     - catalogue
   tasks:
-  ### CREATE ###
+  ### CREATE  ###
   - name: create ec2 instance
     amazon.aws.ec2_instance:
       instance_type: "t3.micro"
