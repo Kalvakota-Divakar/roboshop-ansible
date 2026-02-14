@@ -63,7 +63,7 @@
     ansible.builtin.systemd_service:
       daemon_reload: true
 
-  - name: install dependencies
+  - name: install dependencie
     ansible.builtin.pip:
       name: "{{ item }}"
       executable: pip3.9
@@ -83,7 +83,6 @@
     - /app/db/schema.sql
     - /app/db/app-user.sql 
     - /app/db/master-data.sql
-
 
   - name: start and enable shipping
     ansible.builtin.service:
