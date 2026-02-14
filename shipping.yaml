@@ -1,14 +1,14 @@
 - name: configure shipping server
   hosts: shipping
-  become: true
+  become: yes
   tasks:
   - name: install maven and mysql
     ansible.builtin.dnf:
-    name: "{{ item }}"
-    state: present
-  loop:
-  - maven
-  - mysql
+      name: "{{ item }}"
+      state: present
+    loop:
+    - maven
+    - mysql
 
   - name: create system user roboshop
     ansible.builtin.user:
@@ -23,7 +23,6 @@
       path: /app
       state: absent
 
-  
   - name: create app directory
     ansible.builtin.file:
       path: /app
