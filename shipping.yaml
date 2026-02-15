@@ -81,9 +81,9 @@
       login_port: 3306
       target: "{{ item }}"
     loop:
-    - /app/db/schema.sql
-    - /app/db/app-user.sql 
-    - /app/db/master-data.sql
+      - /app/db/schema.sql
+      - /app/db/app-user.sql 
+      - /app/db/master-data.sql
 
   - name: start and enable shipping
     ansible.builtin.service:
