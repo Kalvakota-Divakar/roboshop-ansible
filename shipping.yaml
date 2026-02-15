@@ -75,11 +75,11 @@
     community.mysql.mysql_db:
       state: import
       name: all
+      target: "{{ item }}"
       login_host: "{{ MYSQL_HOST }}"
       login_user: root
       login_password: RoboShop@1
       login_port: 3306
-      target: "{{ item }}"
     loop:
       - /app/db/schema.sql
       - /app/db/app-user.sql 
